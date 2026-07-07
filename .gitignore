@@ -16,3 +16,6 @@ pnpm-debug.log*
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Claude Code project instructions (local only)
+CLAUDE.md
