@@ -1,0 +1,412 @@
+.todo-app {
+  --font: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --ink: #f5f3ff;
+  --muted: #a49fce;
+  --grad: linear-gradient(135deg, #7c3cff 0%, #d946ef 100%);
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --glass: rgba(255, 255, 255, 0.055);
+  --glass-2: rgba(255, 255, 255, 0.09);
+  --hair: rgba(255, 255, 255, 0.12);
+  --r-xl: 28px;
+  --r: 18px;
+  --r-sm: 12px;
+
+  --p-low: #34f5c5;
+  --p-med: #a78bfa;
+  --p-high: #fb3a7e;
+
+  max-width: 640px;
+  margin: 0 auto;
+  font-family: var(--font);
+  color: var(--ink);
+}
+
+/* Double-bezel card */
+.todo-app .panel {
+  padding: 7px;
+  border-radius: var(--r-xl);
+  background: var(--glass);
+  border: 1px solid var(--hair);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7);
+}
+
+.todo-app .panel-inner {
+  padding: 1.6rem;
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.03)
+  );
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+}
+
+.todo-app .eyebrow-sm {
+  display: inline-block;
+  padding: 0.24rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--glass-2);
+  border: 1px solid var(--hair);
+}
+
+.todo-app .head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 0.9rem 0 1.1rem;
+}
+
+.todo-app .title {
+  margin: 0.4rem 0 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.todo-app .count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--grad);
+  box-shadow: 0 10px 24px -8px rgba(217, 70, 239, 0.6);
+}
+
+.todo-app .progress {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  margin-bottom: 1.4rem;
+}
+
+.todo-app .progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--grad);
+  transform-origin: left;
+  transition: transform 0.6s var(--ease);
+}
+
+/* Composer */
+.todo-app .composer {
+  display: flex;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.todo-app .input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  outline: none;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.todo-app .input::placeholder {
+  color: var(--muted);
+}
+
+.todo-app .input:focus {
+  border-color: rgba(217, 70, 239, 0.6);
+  box-shadow: 0 0 0 4px rgba(217, 70, 239, 0.16);
+}
+
+.todo-app .prio-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.85rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), background 0.3s var(--ease);
+}
+
+.todo-app .prio-btn:active {
+  transform: scale(0.96);
+}
+
+.todo-app .prio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.todo-app .add-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.7rem 0.55rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--grad);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 14px 30px -10px rgba(217, 70, 239, 0.7);
+  transition: transform 0.2s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.todo-app .add-btn:hover {
+  box-shadow: 0 18px 40px -10px rgba(217, 70, 239, 0.85);
+}
+
+.todo-app .add-btn:active {
+  transform: scale(0.97);
+}
+
+.todo-app .add-btn .plus {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.22);
+  transition: transform 0.4s var(--ease);
+}
+
+.todo-app .add-btn:hover .plus {
+  transform: rotate(90deg) scale(1.05);
+}
+
+/* Filters */
+.todo-app .filters {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.28rem;
+  margin-bottom: 1.1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hair);
+}
+
+.todo-app .seg {
+  flex: 1;
+  padding: 0.5rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: color 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.todo-app .seg:hover {
+  color: var(--ink);
+}
+
+.todo-app .seg.active {
+  color: #fff;
+  background: var(--grad);
+  box-shadow: 0 8px 20px -8px rgba(217, 70, 239, 0.6);
+}
+
+/* List */
+.todo-app .list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todo-app .item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  animation: pop-in 0.4s var(--ease) both;
+  transition: border-color 0.4s var(--ease), background 0.4s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+}
+
+.todo-app .item:hover {
+  border-color: rgba(217, 70, 239, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.todo-app .prio-bar {
+  width: 4px;
+  align-self: stretch;
+  border-radius: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.todo-app .check {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.todo-app .check input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.todo-app .check .box {
+  width: 23px;
+  height: 23px;
+  border-radius: 8px;
+  border: 2px solid var(--hair);
+  background: rgba(255, 255, 255, 0.04);
+  display: grid;
+  place-items: center;
+  transition: all 0.3s var(--ease);
+}
+
+.todo-app .check .box::after {
+  content: "";
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg) scale(0);
+  margin-top: -2px;
+  transition: transform 0.3s var(--ease);
+}
+
+.todo-app .check input:checked + .box {
+  background: var(--grad);
+  border-color: transparent;
+}
+
+.todo-app .check input:checked + .box::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.todo-app .item-text {
+  flex: 1;
+  font-size: 0.96rem;
+  cursor: text;
+  transition: color 0.3s var(--ease);
+}
+
+.todo-app .item.done .item-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.todo-app .edit-input {
+  flex: 1;
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+  font-size: 0.96rem;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(217, 70, 239, 0.6);
+  border-radius: 8px;
+  outline: none;
+}
+
+.todo-app .remove {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s var(--ease);
+}
+
+.todo-app .item:hover .remove {
+  opacity: 1;
+}
+
+.todo-app .remove:hover {
+  background: rgba(251, 58, 126, 0.18);
+  color: var(--p-high);
+}
+
+/* Toolbar */
+.todo-app .toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.todo-app .clear {
+  padding: 0.45rem 0.9rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+
+.todo-app .clear:hover {
+  color: var(--p-high);
+  border-color: rgba(251, 58, 126, 0.5);
+}
+
+/* Empty */
+.todo-app .empty {
+  text-align: center;
+  padding: 2.75rem 1rem;
+  color: var(--muted);
+}
+
+.todo-app .empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  animation: float 3s var(--ease) infinite;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.todo-app .empty p {
+  margin: 0;
+  font-size: 0.95rem;
+}

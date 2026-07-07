@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'todoApp',
+      name: 'notesApp',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App',
