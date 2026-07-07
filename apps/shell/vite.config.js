@@ -8,25 +8,26 @@ export default defineConfig({
     federation({
       name: "shell",
       remotes: {
-        // Local dev remotes. Restore the Vercel URLs (kept below) once the
-        // apps are redeployed.
+        // Production remotes on Vercel. For local development, comment these
+        // out and use the localhost entries below (run each remote's dev
+        // server on its port).
         todoApp: {
           type: "module",
           name: "todoApp",
-          entry: "http://localhost:3001/remoteEntry.js",
-          // entry: "https://super-app-chi-eosin.vercel.app/remoteEntry.js",
+          entry: "https://super-app-todo.vercel.app/remoteEntry.js",
+          // entry: "http://localhost:3001/remoteEntry.js",
         },
         notesApp: {
           type: "module",
           name: "notesApp",
-          entry: "http://localhost:3002/remoteEntry.js",
-          // entry: "https://super-app-notes.vercel.app/remoteEntry.js",
+          entry: "https://super-app-notes.vercel.app/remoteEntry.js",
+          // entry: "http://localhost:3002/remoteEntry.js",
         },
         weatherApp: {
           type: "module",
           name: "weatherApp",
-          entry: "http://localhost:3003/remoteEntry.js",
-          // entry: "https://super-app-weather.vercel.app/remoteEntry.js",
+          entry: "https://super-app-weather.vercel.app/remoteEntry.js",
+          // entry: "http://localhost:3003/remoteEntry.js",
         },
       },
       shared: {
