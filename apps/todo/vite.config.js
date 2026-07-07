@@ -2,7 +2,11 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { federation } from '@module-federation/vite'
 
-export default defineConfig({
+// In production this remote is served from its own Vercel origin, so its
+// assets (including the exposed component's CSS) must resolve there — not
+// against the host shell. Use the absolute deploy URL for builds; '/' for dev.
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? 'https://super-app-todo.vercel.app/' : '/',
   plugins: [
     react(),
     federation({
@@ -22,4 +26,4 @@ export default defineConfig({
     origin: 'http://localhost:3001',
   },
   build: { target: 'esnext' },
-})
+}))
